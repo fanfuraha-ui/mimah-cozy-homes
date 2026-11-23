@@ -1,18 +1,20 @@
 # Mimah's Cozy Getaway
 
-Single-file website for Mimah's Cozy Getaway, a furnished one-bedroom serviced apartment at Luxore Apartments, Syokimau, near JKIA, Nairobi.
-Guests pick dates and the form opens WhatsApp (0725790850) with the booking message ready to send.
+Single-file website for Mimah's Cozy Getaway: two apartments in Syokimau, about a 10-minute drive from JKIA.
+- **Taurus Residences**, 8th floor, Mwananchi Road: studio, queen bed and couch, 55" smart TV, 5G Wi-Fi, self check-in.
+- **Luxore Apartments**, Block E, Chady Road: 31 m² one-bedroom, balcony and terrace, bath.
 
-Details and photos come from the Airbnb listing: https://www.airbnb.com/rooms/1426845128649012679
+Guests choose an apartment and dates; WhatsApp (0725790850) opens with the booking message ready to send.
 
-## What is in this repo
-- `index.html` holds everything (HTML, CSS, JS). Edit the `CONFIG` object at the bottom of the script for phone, WhatsApp, location, photos, price, amenities and FAQ.
+Sources: Airbnb (rooms 1357766964721904923 and 1426845128649012679), Booking.com, Agoda and HiChee listings.
+
+## Edit
+Everything is in `index.html`. Change the `CONFIG` object at the bottom (phone, apartments, photos, comparison table, FAQ).
 
 ## Put it online
-**GitHub Pages:** Settings, Pages, deploy from branch `main`, folder `/ (root)`.
-**Any hosting provider (cPanel):** upload `index.html` into `public_html`.
+GitHub Pages: Settings, Pages, deploy from `main`, folder `/ (root)`. Or upload `index.html` to `public_html` on cPanel.
 
-## To fill in
-- Photos are loaded from Airbnb's image server. Before launch, download them into an `images/` folder and change `CONFIG.photos` to the local paths (they can stop loading if Airbnb changes the links).
-- Set `price` on the apartment in `CONFIG` once the rate is confirmed.
-- Check-in and check-out times and house rules were not on the listing, so they are not shown.
+## Before launch
+- Photos load from Airbnb's image server. Download them into `images/` and switch `base`/`photos` in `CONFIG` to local paths.
+- Add nightly rates (none are shown yet).
+- Confirm check-in (until midnight) and check-out (10:00) apply to both apartments.
