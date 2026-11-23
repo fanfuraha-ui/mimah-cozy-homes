@@ -13,7 +13,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 44'%3E%3Crect width='52' height='44' rx='8' fill='%230b1e45'/%3E%3Cpath d='M6 21 26 6l20 15' stroke='%23d4b06a' stroke-width='4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M14 36V26M14 31h24M38 36V29' stroke='%23fff' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"LodgingBusiness","name":"Mimah's Cozy Getaway","slogan":"A cozy getaway near JKIA",
  "description":"Furnished one-bedroom serviced apartment at Luxore Apartments, Syokimau, near JKIA, Nairobi.","telephone":"+254725790850",
@@ -570,6 +570,115 @@ html.cal-lock{overflow:hidden}
 @media(max-width:700px){.shots{grid-template-columns:1fr 1fr;gap:8px}.acard{min-height:340px}}
 .pop-ttl{bottom:32px}.pop-media{background-color:#0b1e45}
 @media(max-width:719px){.pop-media{height:200px}.pop-ttl{bottom:24px}}
+
+/* ===== high-end refinement layer ===== */
+:root{--navy:#0d1a2e;--navy-2:#15243d;--navy-3:#203352;--night:#08111f;--gold:#c8a46a;--gold-2:#a8834a;--gold-ink:#86683a;--ivory:#f8f5ef;--sand:#efe9de;--ink:#1b2230;--muted:#626a78;--line:#e2dacb;--r:4px}
+body{font-size:16.5px;letter-spacing:.005em}
+h1,h2,h3{font-weight:400;letter-spacing:-.015em}
+.title{font-size:clamp(2.4rem,4.6vw,4rem);font-weight:300;line-height:1.02}
+.title em{font-weight:300}
+.eyebrow{font-size:11px;letter-spacing:.32em;font-weight:600}
+.eyebrow::before{width:36px;background:currentColor;opacity:.6}
+.section{padding-block:clamp(84px,11vw,150px)}
+.btn{border-radius:2px;letter-spacing:.18em;font-size:12px;min-height:54px;padding:0 34px}
+.btn-gold{background:var(--gold);color:var(--night);box-shadow:none}.btn-gold:hover{background:#d8b984}
+.btn-ghost{border-radius:2px}
+/* header */
+.logo b{font-weight:600;letter-spacing:.28em;font-size:16px}
+.logo i{letter-spacing:.42em;font-size:10px}
+.nav a{font-size:13px;letter-spacing:.08em}
+/* hero */
+.hero{min-height:100svh}
+.hero-bg img{object-position:50% 50%}
+.hero::after{background:linear-gradient(180deg,rgba(8,17,31,.55) 0%,rgba(8,17,31,.15) 30%,rgba(8,17,31,.45) 62%,rgba(8,17,31,.92) 100%),linear-gradient(90deg,rgba(8,17,31,.55),transparent 65%)}
+.hero h1{font-weight:300;font-size:clamp(3rem,7.2vw,6.2rem);line-height:.98;max-width:13ch;letter-spacing:-.025em}
+.hero h1 em{font-weight:300}
+.hero .lead{font-size:clamp(1.02rem,1.4vw,1.15rem);max-width:520px;color:rgba(255,255,255,.82);font-weight:400}
+.qbar{border-radius:3px;background:rgba(255,255,255,.96);box-shadow:0 40px 80px -30px rgba(0,0,0,.6);padding:6px}
+.qbar label{letter-spacing:.2em;font-size:10px}
+.qbar .btn{border-radius:2px}
+.qmeta{gap:10px 0;font-size:13px;letter-spacing:.02em;color:rgba(255,255,255,.75)}
+.qmeta span{padding-right:22px;margin-right:22px;border-right:1px solid rgba(255,255,255,.22)}
+.qmeta span:last-child{border:0;margin:0;padding:0}
+.qmeta .rating b{font:400 20px var(--serif);color:#fff;margin-right:8px}
+.qmeta .rating i{font-style:normal;color:var(--gold);letter-spacing:.12em;margin-right:8px;font-size:12px}
+@media(max-width:600px){.qmeta span{border:0;margin:0;padding:0 14px 0 0}}
+/* detail bar */
+.facts{background:var(--night);border-top:1px solid rgba(200,164,106,.25)}
+.facts .wrap{grid-template-columns:repeat(4,1fr)}
+.fact{padding:30px 28px;display:flex;flex-direction:column;gap:6px;border-left:1px solid rgba(255,255,255,.08)}
+.fact span{order:-1;font:600 10px var(--sans);letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.fact b{font:300 clamp(1.5rem,2.4vw,2rem)/1 var(--serif);color:#fff}
+@media(max-width:760px){.facts .wrap{grid-template-columns:1fr 1fr}}
+/* about */
+.about{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(40px,7vw,110px);align-items:center}
+.frame{margin:0;position:relative}
+.frame::before{content:"";position:absolute;inset:-18px 18px 18px -18px;border:1px solid var(--gold);opacity:.55;z-index:-1}
+.frame img{width:100%;aspect-ratio:4/5;object-fit:cover;background:var(--sand);display:block}
+.frame figcaption{margin-top:14px;font:italic 400 17px var(--serif);color:var(--muted)}
+.about-copy .intro{font:300 clamp(1.4rem,2.1vw,1.75rem)/1.35 var(--serif);color:var(--navy);margin:22px 0 18px;max-width:30ch}
+.about-copy .muted{max-width:56ch}
+.amen{grid-template-columns:1fr 1fr;gap:0 32px;margin-top:30px;border-top:1px solid var(--line)}
+.amen li{padding:14px 0;border-bottom:1px solid var(--line);font-weight:500;font-size:14.5px}
+.amen li span{width:auto;height:auto;background:none;border-radius:0;color:var(--gold-2)}
+@media(max-width:900px){.about{grid-template-columns:1fr}.frame{max-width:520px;margin-left:18px}}
+/* gallery mosaic */
+.apt-sec{background:var(--sand)}
+.mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(150px,17vw,230px);gap:12px;margin-bottom:56px}
+.mosaic button{border:0;padding:0;cursor:zoom-in;overflow:hidden;background:#e4dccd;position:relative}
+.mosaic img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease),filter .6s}
+.mosaic button:hover img{transform:scale(1.04);filter:brightness(1.05)}
+.mosaic .m0{grid-column:span 2;grid-row:span 2}
+.mosaic .m3,.mosaic .m4,.mosaic .m5{grid-column:span 2}
+@media(max-width:760px){.mosaic{grid-template-columns:1fr 1fr;grid-auto-rows:140px;gap:8px}.mosaic .m3,.mosaic .m4{grid-column:span 1}.mosaic .m5{grid-column:span 2}}
+.agrid{grid-template-columns:1fr}
+.acard{min-height:360px;border-radius:0}
+.acard::after{background:linear-gradient(90deg,rgba(8,17,31,.92) 0%,rgba(8,17,31,.55) 45%,transparent 80%)}
+.acard .in{max-width:560px;padding:clamp(28px,4vw,52px)}
+.acard h3{font-weight:300;font-size:clamp(34px,4vw,48px)}
+.acard .n{font-style:normal;font:600 11px var(--sans);letter-spacing:.3em;text-transform:uppercase}
+@media(max-width:760px){.acard::after{background:linear-gradient(180deg,transparent 20%,rgba(8,17,31,.92) 100%)}}
+/* location */
+.loc{background:var(--navy);color:#fff}
+.locgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,7vw,110px);align-items:center}
+.loc-copy{color:rgba(255,255,255,.72);max-width:44ch;margin-top:20px}
+.dist{list-style:none;margin:0;padding:0;border-top:1px solid rgba(255,255,255,.14)}
+.dist li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 20px;padding:24px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.dist b{font:300 30px/1.1 var(--serif);color:#fff}
+.dist span{grid-column:1;font-size:14px;color:rgba(255,255,255,.6)}
+.dist em{grid-column:2;grid-row:1/3;align-self:center;font:italic 300 24px var(--serif);color:var(--gold)}
+@media(max-width:860px){.locgrid{grid-template-columns:1fr}}
+/* reviews */
+.reviews{background:var(--ivory)}
+.revgrid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,6fr);gap:clamp(40px,7vw,110px);align-items:center}
+.score .big{display:block;font:300 clamp(5rem,11vw,8.5rem)/.9 var(--serif);color:var(--navy);margin:18px 0 8px;letter-spacing:-.03em}
+.stars{color:var(--gold);letter-spacing:.2em;font-size:15px}
+.score .muted{margin:16px 0 18px;max-width:34ch}
+.link{font:600 12px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--navy);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:4px}
+.cats{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+.cats div{padding:18px 0;border-bottom:1px solid var(--line)}
+.cats dt{font-size:14px;color:var(--muted);margin-bottom:10px}
+.cats dd{margin:0;display:flex;align-items:center;gap:14px;font:400 20px var(--serif);color:var(--navy)}
+.cats i{flex:1;height:1px;background:var(--line);position:relative}
+.cats i::after{content:"";position:absolute;left:0;top:-.5px;height:2px;width:calc(var(--v)*100%);background:var(--gold)}
+@media(max-width:860px){.revgrid{grid-template-columns:1fr}.cats{grid-template-columns:1fr}}
+/* booking, faq, contact */
+.form{border-radius:2px;box-shadow:0 40px 90px -40px rgba(13,26,46,.35);border:1px solid var(--line)}
+.form input,.form textarea,.form select,.stepper{border-radius:2px}
+.btn-wa{border-radius:2px}
+.contact{background:var(--night)}
+footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
+/* lightbox */
+.glb{border:0;padding:0;margin:0;width:100vw;height:100dvh;max-width:none;max-height:none;background:rgba(6,12,22,.97);color:#fff}
+.glb[open]{display:grid;place-items:center}
+.glb::backdrop{background:rgba(6,12,22,.97)}
+.glb img{max-width:min(92vw,1400px);max-height:84dvh;object-fit:contain;box-shadow:0 40px 100px -30px #000}
+.glb-x,.glb-a{position:fixed;background:none;border:1px solid rgba(255,255,255,.3);color:#fff;width:52px;height:52px;border-radius:50%;font:300 28px/1 var(--serif);cursor:pointer;transition:all .25s}
+.glb-x:hover,.glb-a:hover{background:var(--gold);border-color:var(--gold);color:var(--night)}
+.glb-x{top:20px;right:20px}
+.glb-a{top:50%;transform:translateY(-50%)}.glb-p{left:20px}.glb-n{right:20px}
+.glb-c{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);font:600 11px var(--sans);letter-spacing:.3em;color:rgba(255,255,255,.6)}
+@media(max-width:600px){.glb-a{top:auto;bottom:16px;transform:none}}
 </style>
 </head>
 <body>
@@ -580,7 +689,7 @@ html.cal-lock{overflow:hidden}
     <span><b>MIMAH'S</b><i>COZY GETAWAY</i></span>
   </a>
   <nav class="nav" aria-label="Main">
-    <a href="#about">The stay</a><a href="#apartments">Apartment</a><a href="#book">Book</a><a href="#faq">FAQ</a>
+    <a href="#about">The stay</a><a href="#apartments">Gallery</a><a href="#location">Location</a><a href="#faq">FAQ</a>
   </nav>
   <a class="call" id="hdrCall" href="#"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#d4b06a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg><span></span></a>
   <a class="btn btn-gold" href="#book">Book now</a>
@@ -591,8 +700,8 @@ html.cal-lock{overflow:hidden}
   <div class="hero-bg" id="heroBg"></div>
   <div class="wrap">
     <p class="eyebrow">Serviced apartment · Syokimau, near JKIA</p>
-    <h1>Your cozy getaway <em>near JKIA.</em></h1>
-    <p class="lead">A furnished one-bedroom apartment in Syokimau with courtyard views, a smart TV and a full kitchen. A relaxed base for a layover, a short stay or longer. Book direct on WhatsApp.</p>
+    <h1>Quiet comfort,<br><em>minutes from JKIA.</em></h1>
+    <p class="lead">A private one-bedroom residence at Luxore Apartments, Syokimau. Courtyard views, warm wood interiors and everything you need for a layover or a longer stay.</p>
     <form class="qbar" id="qbar" novalidate aria-label="Quick availability check">
       <label>Check-in<input type="date" id="qIn"></label>
       <label>Check-out<input type="date" id="qOut"></label>
@@ -600,42 +709,69 @@ html.cal-lock{overflow:hidden}
       <button class="btn btn-gold" type="submit">Check availability</button>
     </form>
     <div class="qmeta">
-      <span><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Reply on WhatsApp</span>
-      <span><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>No platform fees</span>
-      <span><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>No account needed</span>
+      <span class="rating"><b>4.71</b><i>★★★★★</i>35 guest reviews</span>
+      <span>Host replies within an hour</span>
+      <span>Book direct, no platform fees</span>
     </div>
   </div>
 </section>
 
 <section class="facts" aria-label="At a glance"><div class="wrap">
-  <div class="fact"><b>Syokimau</b><span>Near JKIA, Nairobi</span></div>
-  <div class="fact"><b>1 bedroom</b><span>Queen bed, sleeps 2</span></div>
-  <div class="fact"><b>Furnished</b><span>Kitchen, smart TV, hot shower</span></div>
-  <div class="fact"><b>4.71 ★</b><span>35 reviews on Airbnb</span></div>
+  <div class="fact"><span>Location</span><b>Syokimau</b></div>
+  <div class="fact"><span>Residence</span><b>1 bedroom</b></div>
+  <div class="fact"><span>Bed</span><b>Queen</b></div>
+  <div class="fact"><span>Guests</span><b>Up to 2</b></div>
 </div></section>
 
 <section id="about" class="section"><div class="wrap about">
-  <div class="collage rv">
-    <div class="a"><img id="collA" alt="Inside Mimah's Cozy Getaway" width="720" height="540" loading="lazy" decoding="async" referrerpolicy="no-referrer"></div>
-    <div class="b"><img id="collB" alt="Mimah's Cozy Getaway apartment" width="720" height="540" loading="lazy" decoding="async" referrerpolicy="no-referrer"></div>
-    <div class="tag"><b>Feel at home</b><span>Wooden furniture, courtyard views</span></div>
-  </div>
+  <figure class="frame rv"><img id="collA" alt="Living area at Mimah's Cozy Getaway" width="720" height="900" loading="lazy" decoding="async" referrerpolicy="no-referrer"><figcaption>Luxore Apartments · Syokimau</figcaption></figure>
   <div class="about-copy rv">
-    <p class="eyebrow">The apartment</p>
+    <p class="eyebrow">The residence</p>
     <h2 class="title">A home, <em>not just a room</em></h2>
-    <p class="muted">Mimah's Cozy Getaway is a furnished one-bedroom apartment at Luxore Apartments in Syokimau. It has wooden furniture, a large smart TV, a fully equipped kitchen and a hot shower, with views over the inner courtyard.</p>
-    <p class="muted">It is about 2.5&nbsp;km from the Nairobi SGR terminus and 1.8&nbsp;km from the Expressway, so it suits a layover as well as a short or longer stay.</p>
+    <p class="intro">An entire apartment to yourself, finished in warm wood and soft light, looking onto a calm inner courtyard.</p>
+    <p class="muted">Cook in a fully equipped kitchen, settle in front of the large smart TV, and end the day with a hot shower and a queen bed made up before you arrive. It is close enough to the airport for an early flight, and comfortable enough to stay a while.</p>
     <ul class="amen" id="amen"></ul>
   </div>
 </div></section>
 
 <section id="apartments" class="section apt-sec"><div class="wrap">
   <div class="head rv">
-    <div><p class="eyebrow">The apartment</p><h2 class="title">One bedroom, <em>made for two</em></h2></div>
-    <p class="muted">An entire apartment to yourself, with a queen bed, a private bathroom and your own kitchen.</p>
+    <div><p class="eyebrow">Gallery</p><h2 class="title">Step <em>inside</em></h2></div>
+    <p class="muted">Tap any photo to see it full screen.</p>
   </div>
+  <div class="mosaic rv" id="shots"></div>
   <div class="agrid" id="aptCards"></div>
-  <div class="shots" id="shots"></div>
+</div></section>
+
+<section id="location" class="section loc on-dark"><div class="wrap locgrid">
+  <div class="rv">
+    <p class="eyebrow">Location</p>
+    <h2 class="title">Close to the airport, <em>away from the noise</em></h2>
+    <p class="loc-copy">Luxore Apartments sits in Syokimau, on the airport side of Nairobi. Exact directions and check-in details are shared on WhatsApp before you arrive.</p>
+  </div>
+  <ul class="dist rv">
+    <li><b>JKIA</b><span>Jomo Kenyatta International Airport</span><em>Nearby</em></li>
+    <li><b>SGR</b><span>Nairobi terminus, Syokimau</span><em>≈ 2.5 km</em></li>
+    <li><b>Expressway</b><span>Nairobi Expressway access</span><em>≈ 1.8 km</em></li>
+  </ul>
+</div></section>
+
+<section class="section reviews"><div class="wrap revgrid">
+  <div class="rv score">
+    <p class="eyebrow">Guest rating</p>
+    <b class="big">4.71</b>
+    <span class="stars">★★★★★</span>
+    <p class="muted">From 35 reviews on Airbnb. Guests mention the hospitality and cleanliness most.</p>
+    <a class="link" id="abLink" href="#" target="_blank" rel="noopener">Read the reviews on Airbnb →</a>
+  </div>
+  <dl class="cats rv">
+    <div><dt>Cleanliness</dt><dd><i style="--v:.94"></i>4.7</dd></div>
+    <div><dt>Accuracy</dt><dd><i style="--v:.94"></i>4.7</dd></div>
+    <div><dt>Check-in</dt><dd><i style="--v:.96"></i>4.8</dd></div>
+    <div><dt>Communication</dt><dd><i style="--v:.96"></i>4.8</dd></div>
+    <div><dt>Location</dt><dd><i style="--v:.94"></i>4.7</dd></div>
+    <div><dt>Value</dt><dd><i style="--v:.94"></i>4.7</dd></div>
+  </dl>
 </div></section>
 
 <section id="book" class="section"><div class="wrap bookgrid">
@@ -691,6 +827,14 @@ html.cal-lock{overflow:hidden}
   <a id="mWa" href="#" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 21l1.9-5.2A8.4 8.4 0 1 1 21 11.5Z"/></svg>WhatsApp</a>
   <a class="on" href="#book"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Book a stay</a>
 </nav>
+
+<dialog class="glb" id="glb" aria-label="Photo viewer">
+  <button class="glb-x" type="button" id="glbX" aria-label="Close">×</button>
+  <button class="glb-a glb-p" type="button" id="glbP" aria-label="Previous photo">‹</button>
+  <img id="glbImg" alt="" referrerpolicy="no-referrer">
+  <button class="glb-a glb-n" type="button" id="glbN" aria-label="Next photo">›</button>
+  <span class="glb-c" id="glbC"></span>
+</dialog>
 
 <dialog class="pop" id="pop" aria-labelledby="popT">
   <button class="pop-x" type="button" id="popX" aria-label="Close"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
@@ -789,8 +933,18 @@ const mark = '<svg width="54" height="46" viewBox="0 0 52 44" fill="none" aria-h
 const ph = (i, w) => `${CONFIG.photos[i]}?im_w=${w}`;
 const photoImg = (i, w, extra = "") => `<img src="${ph(i, 720)}" ${w > 720 ? `srcset="${ph(i, 720)} 720w, ${ph(i, w)} ${w}w" sizes="100vw"` : ""} alt="${esc(CONFIG.photoAlt[i] || "Mimah's Cozy Getaway, photo " + (i + 1))}" referrerpolicy="no-referrer" ${extra}>`;
 $("#heroBg").innerHTML = photoImg(0, 1200, 'fetchpriority="high"');
-$("#collA").src = ph(1, 720); $("#collB").src = ph(2, 720);
-$("#shots").innerHTML = CONFIG.photos.map((_, i) => `<a href="${ph(i, 1200)}" target="_blank" rel="noopener" aria-label="Open photo ${i + 1}">${photoImg(i, 720, 'loading="lazy" decoding="async" width="720" height="540"')}</a>`).join("");
+$("#collA").src = ph(1, 900);
+$("#abLink").href = CONFIG.airbnb;
+$("#shots").innerHTML = CONFIG.photos.map((_, i) => `<button type="button" class="m${i}" data-i="${i}" aria-label="Open photo ${i + 1}">${photoImg(i, 1200, 'loading="lazy" decoding="async"')}</button>`).join("");
+const glb = $("#glb"); let gi = 0;
+const gShow = n => { gi = (n + CONFIG.photos.length) % CONFIG.photos.length; $("#glbImg").src = ph(gi, 1600); $("#glbImg").alt = CONFIG.photoAlt[gi] || `Photo ${gi + 1}`; $("#glbC").textContent = `${gi + 1} / ${CONFIG.photos.length}`; };
+$("#shots").addEventListener("click", e => { const b = e.target.closest("button[data-i]"); if (!b) return; gShow(+b.dataset.i); glb.showModal(); document.body.style.overflow = "hidden"; });
+$("#glbP").onclick = () => gShow(gi - 1); $("#glbN").onclick = () => gShow(gi + 1); $("#glbX").onclick = () => glb.close();
+glb.addEventListener("close", () => { document.body.style.overflow = ""; });
+glb.addEventListener("click", e => { if (e.target === glb) glb.close(); });
+glb.addEventListener("keydown", e => { if (e.key === "ArrowLeft") gShow(gi - 1); if (e.key === "ArrowRight") gShow(gi + 1); });
+let gx = null; glb.addEventListener("touchstart", e => { gx = e.touches[0].clientX; }, { passive: true });
+glb.addEventListener("touchend", e => { if (gx === null) return; const d = e.changedTouches[0].clientX - gx; gx = null; if (Math.abs(d) > 40) gShow(gi + (d < 0 ? 1 : -1)); });
 
 /* apartments */
 $("#aptCards").innerHTML = CONFIG.apartments.map((a, i) => `
