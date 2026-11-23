@@ -234,16 +234,154 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
   body{padding-bottom:84px}
 }
 
+/* ===== pop-ups: shared ===== */
+.ui-back{position:fixed;inset:0;z-index:79;background:rgba(8,17,31,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .3s}
+.ui-back.on{opacity:1;pointer-events:auto}
+html.ui-lock{overflow:hidden}
+.ui-pop{position:absolute;z-index:80;background:linear-gradient(180deg,#fffdf9,#fbf7ef);color:var(--ink);border:1px solid rgba(200,164,106,.35);box-shadow:0 50px 100px -40px rgba(8,17,31,.55),0 18px 40px -24px rgba(8,17,31,.35);opacity:0;transform:translateY(10px) scale(.97);transition:opacity .28s var(--ease),transform .36s var(--ease)}
+.ui-pop.on{opacity:1;transform:none}
+.ui-pop::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.ui-grab{display:none}
+.ui-h{padding:22px 24px 14px}
+.ui-h small{display:block;font:600 10px var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:6px}
+.ui-h b{font:400 26px/1.1 var(--serif);color:var(--navy)}
+.ui-pop.sheet{position:fixed;left:0!important;right:0;width:auto!important;bottom:0;top:auto!important;max-height:88dvh;overflow:auto;border-radius:18px 18px 0 0;transform:translateY(100%);transition:transform .42s var(--ease),opacity .2s;padding-bottom:env(safe-area-inset-bottom)}
+.ui-pop.sheet.on{transform:none}
+.ui-pop.sheet .ui-grab{display:block;width:44px;height:4px;border-radius:4px;background:var(--line);margin:10px auto 0}
+
+/* triggers */
+.strig,.dtrig{display:flex;align-items:center;gap:10px;width:100%;border:0;background:transparent;padding:0;cursor:pointer;font:600 15.5px var(--sans);color:var(--navy);text-align:left;letter-spacing:0;text-transform:none;height:30px}
+.strig span,.dtrig span{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.strig img{width:28px;height:28px;border-radius:50%;object-fit:cover;flex:none;box-shadow:0 0 0 2px #fff,0 0 0 3px var(--gold)}
+.strig .ico{width:16px;height:16px;color:var(--gold-2);transition:transform .3s var(--ease)}
+.strig[aria-expanded=true] .ico{transform:rotate(180deg)}
+.dtrig .ico{width:16px;height:16px;color:var(--gold-2)}
+.dtrig .ph{color:#9aa1ad;font-weight:500}
+.qbar label:has(.act),.qbar label:has([aria-expanded=true]){background:var(--sand)}
+.qbar label{transition:background .25s}
+.form .strig,.form .dtrig{height:50px;border:1px solid var(--line);border-radius:2px;padding:0 14px;background:var(--ivory)}
+.form .strig[aria-expanded=true],.form .dtrig.act{border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,164,106,.18)}
+
+/* select panel */
+.ui-sel{width:min(420px,calc(100vw - 24px))}
+.ui-list{padding:0 10px 12px}
+.ui-o{display:grid;grid-template-columns:64px 1fr 26px;gap:16px;align-items:center;padding:12px;cursor:pointer;border-top:1px solid var(--line);outline:none;opacity:0;transform:translateY(6px);animation:uiIn .45s var(--ease) forwards;animation-delay:calc(var(--i)*55ms + 60ms);transition:background .2s}
+.ui-o:first-child{border-top:0}
+@keyframes uiIn{to{opacity:1;transform:none}}
+.ui-o:hover,.ui-o:focus-visible{background:rgba(200,164,106,.1)}
+.ui-o img{width:64px;height:64px;object-fit:cover;background:var(--sand)}
+.ui-n{width:64px;height:64px;display:grid;place-items:center;border:1px solid var(--gold);font:300 34px var(--serif);color:var(--navy)}
+.ui-t b{display:block;font:400 21px/1.15 var(--serif);color:var(--navy)}
+.ui-t em{display:block;font-style:normal;font-size:13px;color:var(--muted);margin-top:2px}
+.ui-t i{display:block;font-style:normal;font-size:12.5px;font-weight:700;color:var(--gold-ink);margin-top:4px}
+.ui-t i span{font-weight:500;color:var(--muted)}
+.ui-k{width:26px;height:26px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:transparent;transition:all .25s}
+.ui-k .ico{width:14px;height:14px}
+.ui-o[aria-selected=true] .ui-k{background:var(--navy);border-color:var(--navy);color:var(--gold)}
+.ui-o[aria-selected=true] .ui-n{background:var(--navy);color:var(--gold);border-color:var(--navy)}
+
+/* calendar */
+.ui-cal{width:min(700px,calc(100vw - 24px))}
+.cal-top{display:flex;justify-content:space-between;align-items:flex-end;padding-right:20px}
+.cal-nav{display:flex;gap:8px;padding-bottom:16px}
+.cal-nav button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--navy);font:300 24px/1 var(--serif);cursor:pointer;transition:all .2s}
+.cal-nav button:hover:not(:disabled){background:var(--navy);color:var(--gold);border-color:var(--navy)}
+.cal-nav button:disabled{opacity:.3;cursor:default}
+.cal-months{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));grid-auto-flow:column;gap:32px;padding:4px 24px 18px;border-top:1px solid var(--line)}
+.cal-m h4{font:400 20px var(--serif);color:var(--navy);margin:16px 0 10px;text-align:center}
+.cal-m h4 em{color:var(--gold-2)}
+.cal-w,.cal-g{display:grid;grid-template-columns:repeat(7,1fr)}
+.cal-w span{font:700 10px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:center;padding:6px 0}
+.cal-g button{position:relative;aspect-ratio:1;border:0;background:none;font:500 14px var(--sans);color:var(--navy);cursor:pointer;z-index:0;padding:0}
+.cal-g button::after{content:"";position:absolute;inset:3px;border-radius:50%;z-index:-1;transition:background .15s,box-shadow .15s}
+.cal-g button:hover:not(:disabled)::after{box-shadow:inset 0 0 0 1px var(--navy)}
+.cal-g button:disabled{color:#c3c7ce;cursor:default;text-decoration:line-through;text-decoration-color:rgba(0,0,0,.15)}
+.cal-g button.t{font-weight:800}
+.cal-g button.t::before{content:"";position:absolute;left:50%;bottom:6px;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:var(--gold)}
+.cal-g button.r{background:rgba(200,164,106,.16)}
+.cal-g button.s,.cal-g button.e,.cal-g button.hv{color:var(--gold);font-weight:700}
+.cal-g button.s::after,.cal-g button.e::after{background:var(--navy)}
+.cal-g button.hv::after{background:var(--navy-2)}
+.cal-g button.s{background:linear-gradient(90deg,transparent 50%,rgba(200,164,106,.16) 50%)}
+.cal-g button.e,.cal-g button.hv{background:linear-gradient(90deg,rgba(200,164,106,.16) 50%,transparent 50%)}
+.cal-g button.s.e{background:none}
+.cal-foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:16px 24px 20px;border-top:1px solid var(--line);background:rgba(239,233,222,.5)}
+.cal-sum{display:flex;align-items:center;gap:16px;font:400 19px var(--serif);color:var(--navy)}
+.cal-sum small{display:block;font:600 9.5px var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.cal-sum i{width:28px;height:1px;background:var(--gold)}
+.cal-sum strong{font:400 28px/1 var(--serif);color:var(--gold-2);padding-left:16px;border-left:1px solid var(--line)}
+.cal-sum strong small{display:inline;margin-left:6px;letter-spacing:.14em}
+.cal-act{display:flex;gap:10px;align-items:center}
+.cal-clear{background:none;border:0;font:700 11px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);cursor:pointer;padding:12px 6px;text-decoration:underline;text-underline-offset:4px}
+.cal-done{min-height:46px;padding:0 26px}
+.cal-done:disabled{opacity:.35;cursor:default}
+@media(max-width:719px){.cal-months{padding:4px 16px 12px}.cal-foot{padding:14px 16px 18px}.cal-sum{font-size:16px;gap:10px}.ui-h{padding:16px 18px 12px}}
+
+/* review pop-up */
+.rvw{border:0;padding:0;margin:auto;width:min(920px,calc(100vw - 24px));max-height:calc(100dvh - 24px);background:var(--ivory);color:var(--ink);display:none;grid-template-columns:minmax(0,5fr) minmax(0,6fr);overflow:hidden;box-shadow:0 80px 160px -40px rgba(2,8,20,.9),0 0 0 1px rgba(200,164,106,.4)}
+.rvw[open]{display:grid;animation:rvwIn .55s var(--ease)}
+@keyframes rvwIn{from{opacity:0;transform:translateY(24px) scale(.97)}}
+.rvw::backdrop{background:rgba(6,12,22,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.rvw-img{position:relative;min-height:100%;background:var(--navy)}
+.rvw-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.rvw-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,17,31,.1) 30%,rgba(8,17,31,.9))}
+.rvw-cap{position:absolute;left:28px;right:28px;bottom:28px;z-index:1;color:#fff}
+.rvw-cap small{display:block;font:600 10px var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.rvw-cap b{display:block;font:300 36px/1 var(--serif);margin-bottom:8px}
+.rvw-cap b em{color:var(--gold)}
+.rvw-cap span{font-size:13px;color:rgba(255,255,255,.75)}
+.rvw-body{position:relative;padding:clamp(26px,4vw,44px);overflow:auto}
+.rvw-body h3{font-size:clamp(34px,4vw,44px);margin-bottom:24px}
+.rvw-body h3 em{font-style:italic;color:var(--gold-2)}
+.rvw-x{position:absolute;top:16px;right:16px;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--navy);font:300 26px/1 var(--serif);cursor:pointer}
+.rvw-x:hover{background:var(--navy);color:var(--gold)}
+.tk{background:#fff;border:1px solid var(--line);position:relative}
+.tk::before,.tk::after{content:"";position:absolute;top:118px;width:18px;height:18px;border-radius:50%;background:var(--ivory);border:1px solid var(--line)}
+.tk::before{left:-10px;clip-path:inset(0 0 0 50%)}.tk::after{right:-10px;clip-path:inset(0 50% 0 0)}
+.tk-d{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:22px 24px;border-bottom:1px dashed var(--line);min-height:128px}
+.tk-d>div{text-align:center}
+.tk-d small{display:block;font:600 9.5px var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
+.tk-d b{display:block;font:300 54px/1 var(--serif);color:var(--navy);margin:4px 0}
+.tk-d span{font-size:12.5px;color:var(--muted);letter-spacing:.06em}
+.tk-n{padding:0 18px;position:relative}
+.tk-n::before,.tk-n::after{content:"";position:absolute;top:50%;width:14px;height:1px;background:var(--gold)}
+.tk-n::before{left:0}.tk-n::after{right:0}
+.tk-n i{display:block;font:italic 300 32px/1 var(--serif);color:var(--gold-2)}
+.tk-n em{font-style:normal;font:600 9.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+#rvwList{padding:6px 24px 14px}
+#rvwList div{display:flex;justify-content:space-between;gap:20px;padding:11px 0;border-bottom:1px solid var(--line)}
+#rvwList div:last-child{border-bottom:0}
+#rvwList dt{font:600 10px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+#rvwList dd{margin:0;font-weight:600;color:var(--navy);text-align:right}
+.rvw-fine{font-size:13px;color:var(--muted);margin:18px 0}
+.rvw-act{display:grid;grid-template-columns:auto 1fr;gap:10px}
+@media(max-width:760px){.rvw{grid-template-columns:1fr;width:calc(100vw - 16px)}.rvw-img{min-height:180px}.rvw-cap{left:20px;bottom:18px}.rvw-cap b{font-size:28px}.tk::before,.tk::after{top:106px}.tk-d{min-height:116px;padding:18px 12px}.tk-d b{font-size:44px}}
+
 /* lightbox */
-.glb{border:0;padding:0;margin:0;width:100vw;height:100dvh;max-width:none;max-height:none;background:rgba(6,12,22,.97);color:#fff}
-.glb[open]{display:grid;place-items:center}
-.glb::backdrop{background:rgba(6,12,22,.97)}
-.glb img{max-width:min(92vw,1400px);max-height:82dvh;object-fit:contain}
-.glb button{position:fixed;background:none;border:1px solid rgba(255,255,255,.3);color:#fff;width:52px;height:52px;border-radius:50%;font:300 28px/1 var(--serif);cursor:pointer}
-.glb button:hover{background:var(--gold);border-color:var(--gold);color:var(--night)}
-#gX{top:20px;right:20px}#gP{left:20px;top:50%;transform:translateY(-50%)}#gN{right:20px;top:50%;transform:translateY(-50%)}
-.glb-c{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);font:600 11px var(--sans);letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.65);white-space:nowrap}
-@media(max-width:600px){#gP,#gN{top:auto;bottom:60px;transform:none}}
+.glb{border:0;padding:0;margin:0;width:100vw;height:100dvh;max-width:none;max-height:none;background:radial-gradient(90% 70% at 50% 0%,#17284a 0%,transparent 65%),#060c16;color:#fff;overflow:hidden}
+.glb[open]{display:grid;grid-template-rows:auto auto 1fr auto;animation:glbIn .45s var(--ease)}
+@keyframes glbIn{from{opacity:0}}
+.glb::backdrop{background:#060c16}
+.glb-top{display:flex;align-items:center;gap:20px;padding:20px clamp(18px,4vw,36px) 14px}
+.glb-top>div{flex:1;min-width:0}
+.glb-top small{display:block;font:600 10px var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.glb-top b{font:300 26px var(--serif)}
+.glb-c{font:400 15px var(--sans);letter-spacing:.12em;color:rgba(255,255,255,.55)}
+.glb-c b{font:300 26px var(--serif);color:#fff;letter-spacing:0}
+.glb-bar{display:block;height:1px;background:rgba(255,255,255,.12);margin:0 clamp(18px,4vw,36px)}
+.glb-bar u{display:block;height:1px;background:var(--gold);transition:width .45s var(--ease)}
+.glb-stage{display:grid;place-items:center;padding:18px clamp(12px,8vw,110px);min-height:0}
+.glb-stage img{max-width:100%;max-height:calc(100dvh - 230px);object-fit:contain;box-shadow:0 50px 100px -30px #000,0 0 0 1px rgba(200,164,106,.25);opacity:0;transform:scale(.985);transition:opacity .45s var(--ease),transform .6s var(--ease)}
+.glb-stage img.in{opacity:1;transform:none}
+.glb-b{width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.04);color:#fff;font:300 28px/1 var(--serif);cursor:pointer;transition:all .25s;flex:none}
+.glb-b:hover{background:var(--gold);border-color:var(--gold);color:var(--night)}
+.glb-a{position:fixed;top:50%;transform:translateY(-50%)}#gP{left:clamp(10px,2vw,28px)}#gN{right:clamp(10px,2vw,28px)}
+.glb-th{display:flex;gap:10px;justify-content:center;overflow-x:auto;padding:4px 20px 22px;scrollbar-width:none}
+.glb-th button{flex:none;width:84px;height:58px;padding:0;border:0;background:none;cursor:pointer;opacity:.4;outline:1px solid transparent;outline-offset:3px;transition:opacity .25s,outline-color .25s}
+.glb-th button:hover{opacity:.8}
+.glb-th button[aria-current=true]{opacity:1;outline-color:var(--gold)}
+.glb-th img{width:100%;height:100%;object-fit:cover}
+@media(max-width:600px){.glb-a{top:auto;bottom:96px;transform:none}.glb-th{justify-content:flex-start}.glb-th button{width:64px;height:46px}.glb-stage img{max-height:calc(100dvh - 260px)}}
 
 /* reveal */
 .rv{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
@@ -402,11 +540,24 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
 </nav>
 
 <dialog class="glb" id="glb" aria-label="Photo viewer">
-  <button type="button" id="gX" aria-label="Close">×</button>
-  <button type="button" id="gP" aria-label="Previous photo">‹</button>
-  <img id="gImg" alt="" referrerpolicy="no-referrer">
-  <button type="button" id="gN" aria-label="Next photo">›</button>
-  <span class="glb-c" id="gC"></span>
+  <div class="glb-top"><div><small id="gE"></small><b id="gT"></b></div><span class="glb-c" id="gC"></span><button type="button" class="glb-b" id="gX" aria-label="Close">×</button></div>
+  <i class="glb-bar"><u id="gBar"></u></i>
+  <div class="glb-stage" id="gStage"><img id="gImg" alt="" referrerpolicy="no-referrer"></div>
+  <button type="button" class="glb-b glb-a" id="gP" aria-label="Previous photo">‹</button>
+  <button type="button" class="glb-b glb-a" id="gN" aria-label="Next photo">›</button>
+  <div class="glb-th" id="gTh"></div>
+</dialog>
+
+<dialog class="rvw" id="rvw" aria-labelledby="rvwT">
+  <div class="rvw-img" id="rvwImg"></div>
+  <div class="rvw-body">
+    <button type="button" class="rvw-x" id="rvwX" aria-label="Close">×</button>
+    <p class="eyebrow">Your stay</p>
+    <h3 id="rvwT">Review <em>and send</em></h3>
+    <div class="tk"><div class="tk-d" id="rvwDates"></div><dl id="rvwList"></dl></div>
+    <p class="rvw-fine">We reply on WhatsApp with availability and the rate, usually within an hour. Nothing is charged now.</p>
+    <div class="rvw-act"><button class="btn btn-line" type="button" id="rvwEdit">Edit</button><button class="btn btn-wa" type="button" id="rvwGo">Send on WhatsApp</button></div>
+  </div>
 </dialog>
 
 <script>
@@ -522,8 +673,22 @@ $("#faqList").innerHTML = CONFIG.faq.map(([q, a], i) => `<details${i === 0 ? " o
 
 /* lightbox */
 const glb = $("#glb"); let gr = R[0], gi = 0, gx = null;
-const gShow = n => { gi = (n + gr.photos.length) % gr.photos.length; $("#gImg").src = ph(gr, gi, 1440); $("#gImg").alt = alt(gr, gi); $("#gC").textContent = `${strip(gr.name)} · ${gi + 1} / ${gr.photos.length}`; };
-document.addEventListener("click", e => { const b = e.target.closest(".mosaic button"); if (!b) return; gr = R[+b.dataset.r]; gShow(+b.dataset.i); glb.showModal(); document.body.style.overflow = "hidden"; });
+const gShow = n => {
+  gi = (n + gr.photos.length) % gr.photos.length;
+  const img = $("#gImg"); img.classList.remove("in"); img.src = ph(gr, gi, 1440); img.alt = alt(gr, gi);
+  img.decode ? img.decode().then(() => img.classList.add("in"), () => img.classList.add("in")) : img.classList.add("in");
+  $("#gE").textContent = `${gr.short} · ${gr.tag}`; $("#gT").textContent = gr.captions[gi] || strip(gr.name);
+  $("#gC").innerHTML = `<b>${String(gi + 1).padStart(2, "0")}</b> / ${String(gr.photos.length).padStart(2, "0")}`;
+  $("#gBar").style.width = `${(gi + 1) / gr.photos.length * 100}%`;
+  $("#gTh").querySelectorAll("button").forEach((b, i) => { b.setAttribute("aria-current", i === gi); if (i === gi) b.scrollIntoView({ block: "nearest", inline: "center" }); });
+};
+document.addEventListener("click", e => {
+  const b = e.target.closest(".mosaic button"); if (!b) return; gr = R[+b.dataset.r];
+  $("#gTh").innerHTML = gr.photos.map((_, i) => `<button type="button" data-t="${i}" aria-label="Photo ${i + 1}"><img src="${ph(gr, i, 320)}" alt="" referrerpolicy="no-referrer"></button>`).join("");
+  glb.showModal(); document.body.style.overflow = "hidden"; gShow(+b.dataset.i);
+});
+$("#gTh").addEventListener("click", e => { const t = e.target.closest("[data-t]"); if (t) gShow(+t.dataset.t); });
+$("#gStage").addEventListener("click", e => { if (e.target.id === "gStage") glb.close(); });
 $("#gP").onclick = () => gShow(gi - 1); $("#gN").onclick = () => gShow(gi + 1); $("#gX").onclick = () => glb.close();
 glb.addEventListener("close", () => { document.body.style.overflow = ""; });
 glb.addEventListener("click", e => { if (e.target === glb) glb.close(); });
@@ -550,8 +715,9 @@ const send = t => { const w = window.open(wa(t), "_blank", "noopener"); if (!w) 
 $("#qbar").addEventListener("submit", e => {
   e.preventDefault();
   const d = { res: $("#qRes").value, ci: $("#qIn").value, co: $("#qOut").value, guests: $("#qGuests").value };
-  if (check(d.ci, d.co)) { ["Res", "In", "Out", "Guests"].forEach(k => $("#f" + k).value = $("#q" + k).value); refresh(); $("#fErr").textContent = check(d.ci, d.co); $("#book").scrollIntoView({ behavior: "smooth" }); return; }
-  send(msg(d));
+  if (check(d.ci, d.co)) { UI.dates.q.show(d.ci ? "out" : "in"); return; }
+  ["Res", "In", "Out", "Guests"].forEach(k => { $("#f" + k).value = $("#q" + k).value; $("#f" + k).dispatchEvent(new Event("change", { bubbles: true })); }); refresh();
+  UI.review(d);
 });
 const F = () => ({ res: $("#fRes").value, ci: $("#fIn").value, co: $("#fOut").value, guests: $("#fGuests").value, name: $("#fName").value.trim(), arr: $("#fArr").value.trim(), note: $("#fNote").value.trim() });
 const refresh = () => {
@@ -560,8 +726,170 @@ const refresh = () => {
 };
 $("#bookForm").addEventListener("input", () => { $("#fErr").textContent = ""; refresh(); });
 $("#bookForm").addEventListener("change", refresh);
-$("#bookForm").addEventListener("submit", e => { e.preventDefault(); const d = F(), bad = check(d.ci, d.co); if (bad) { $("#fErr").textContent = bad; return; } send(msg(d)); });
-document.addEventListener("click", e => { const a = e.target.closest("[data-pick]"); if (a) { $("#fRes").value = $("#qRes").value = a.dataset.pick; refresh(); } });
+$("#bookForm").addEventListener("submit", e => { e.preventDefault(); const d = F(), bad = check(d.ci, d.co); if (bad) { $("#fErr").textContent = bad; UI.dates.f.show(d.ci ? "out" : "in"); return; } UI.review(d); });
+document.addEventListener("click", e => { const a = e.target.closest("[data-pick]"); if (a) { ["#fRes", "#qRes"].forEach(s => { $(s).value = a.dataset.pick; $(s).dispatchEvent(new Event("change", { bubbles: true })); }); refresh(); } });
+
+/* ===================== custom dropdowns, range calendar and review pop-up ===================== */
+const UI = (() => {
+  const mq = matchMedia("(max-width:719px)");
+  const CHEV = svg('<path d="m6 9 6 6 6-6"/>'), CAL = '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>';
+  const fire = (el, t) => el.dispatchEvent(new Event(t, { bubbles: true }));
+  const back = document.createElement("div"); back.className = "ui-back"; document.body.append(back);
+  let cur = null;
+  const closeAll = focus => {
+    if (!cur) return; const c = cur; cur = null;
+    c.panel.classList.remove("on"); back.classList.remove("on"); document.documentElement.classList.remove("ui-lock");
+    document.querySelectorAll("[aria-expanded=true].strig,[aria-expanded=true].dtrig").forEach(t => t.setAttribute("aria-expanded", "false"));
+    document.querySelectorAll(".dtrig.act").forEach(t => t.classList.remove("act"));
+    setTimeout(() => c.panel.remove(), 280);
+    if (focus) c.trigger.focus({ preventScroll: true });
+  };
+  const place = (panel, anchor) => {
+    if (mq.matches) { panel.classList.add("sheet"); back.classList.add("on"); document.documentElement.classList.add("ui-lock"); return; }
+    const r = anchor.getBoundingClientRect(), w = panel.offsetWidth, h = panel.offsetHeight;
+    const left = Math.min(Math.max(12, r.left), innerWidth - w - 12);
+    const above = r.bottom + h + 16 > innerHeight && r.top > h + 90;
+    panel.style.left = left + scrollX + "px";
+    panel.style.top = (above ? r.top - h - 10 : r.bottom + 10) + scrollY + "px";
+    panel.style.transformOrigin = `${Math.max(20, r.left - left + 40)}px ${above ? "100%" : "0"}`;
+  };
+  const open = (trigger, anchor, cls, build) => {
+    closeAll(false);
+    const panel = document.createElement("div"); panel.className = "ui-pop " + cls; document.body.append(panel);
+    cur = { panel, trigger }; build(panel);
+    trigger.setAttribute("aria-expanded", "true"); place(panel, anchor);
+    requestAnimationFrame(() => requestAnimationFrame(() => panel.classList.add("on")));
+    if (!mq.matches) setTimeout(() => { const r = panel.getBoundingClientRect(); if (r.bottom > innerHeight - 12) scrollBy({ top: Math.min(r.bottom - innerHeight + 24, r.top - 90), behavior: "smooth" }); }, 40);
+    return cur;
+  };
+  document.addEventListener("pointerdown", e => { if (cur && !cur.panel.contains(e.target) && !e.target.closest(".strig,.dtrig")) closeAll(false); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && cur) { e.preventDefault(); closeAll(true); } });
+  back.addEventListener("click", () => closeAll(true));
+  addEventListener("resize", () => { if (cur && !mq.matches) closeAll(false); });
+
+  /* --- select --- */
+  const select = (sel, meta, eyebrow, title) => {
+    const t = document.createElement("button"); t.type = "button"; t.className = "strig";
+    t.setAttribute("aria-haspopup", "listbox"); t.setAttribute("aria-expanded", "false");
+    const paint = () => { const m = meta(sel.value); t.innerHTML = `${m.thumb ? `<img src="${m.thumb}" alt="" referrerpolicy="no-referrer">` : ""}<span>${esc(m.short || m.t)}</span>${CHEV}`; t.setAttribute("aria-label", `${eyebrow}: ${m.t}`); };
+    sel.hidden = true; sel.tabIndex = -1; sel.after(t); paint(); sel.addEventListener("change", paint);
+    t.addEventListener("click", () => {
+      if (cur && cur.trigger === t) return closeAll(true);
+      open(t, sel.closest("label"), "ui-sel", panel => {
+        panel.setAttribute("role", "listbox"); panel.setAttribute("aria-label", title);
+        panel.innerHTML = `<div class="ui-grab"></div><div class="ui-h"><small>${esc(eyebrow)}</small><b>${esc(title)}</b></div><div class="ui-list">` +
+          [...sel.options].map((o, i) => { const m = meta(o.value);
+            return `<div class="ui-o" role="option" tabindex="-1" data-v="${esc(o.value)}" aria-selected="${o.value === sel.value}" style="--i:${i}">` +
+              (m.thumb ? `<img src="${m.thumb}" alt="" referrerpolicy="no-referrer">` : `<span class="ui-n">${esc(m.badge)}</span>`) +
+              `<span class="ui-t"><b>${esc(m.t)}</b><em>${esc(m.s)}</em>${m.r ? `<i>${m.r}</i>` : ""}</span><span class="ui-k">${svg(TICK)}</span></div>`; }).join("") + "</div>";
+        const choose = o => { sel.value = o.dataset.v; fire(sel, "change"); panel.querySelectorAll(".ui-o").forEach(x => x.setAttribute("aria-selected", x === o)); setTimeout(() => closeAll(true), 200); };
+        panel.addEventListener("click", e => { const o = e.target.closest(".ui-o"); if (o) choose(o); });
+        panel.addEventListener("keydown", e => {
+          const it = [...panel.querySelectorAll(".ui-o")], i = it.indexOf(document.activeElement);
+          if (e.key === "ArrowDown") { e.preventDefault(); it[Math.min(it.length - 1, i + 1)].focus(); }
+          else if (e.key === "ArrowUp") { e.preventDefault(); it[Math.max(0, i - 1)].focus(); }
+          else if ((e.key === "Enter" || e.key === " ") && i > -1) { e.preventDefault(); choose(it[i]); }
+        });
+        setTimeout(() => (panel.querySelector('[aria-selected="true"]') || panel.querySelector(".ui-o")).focus({ preventScroll: true }), 60);
+      });
+    });
+  };
+  const resMeta = v => { const r = R.find(x => x.id === v) || R[0];
+    return { t: strip(r.name), short: `${r.short} · ${r.tag.split(" · ")[0]}`, s: `${r.tag} · ${r.address.split(",").slice(-2, -1)[0].trim()}`, thumb: ph(r, 0, 240), r: `★ ${r.score[0][0]} <span>${esc(r.score[0][1])}</span>` }; };
+  const guestMeta = v => ({ t: v === "1" ? "1 guest" : "2 guests", short: v, s: v === "1" ? "Solo traveller, work trip or layover" : "Couple or two colleagues. The maximum for both apartments", badge: v });
+  ["#qRes", "#fRes"].forEach(s => select($(s), resMeta, "Where to stay", "Choose your apartment"));
+  ["#qGuests", "#fGuests"].forEach(s => select($(s), guestMeta, "Who's coming", "Number of guests"));
+
+  /* --- range calendar --- */
+  const MON = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const dObj = v => new Date(v + "T12:00:00");
+  const short = v => dObj(v).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" });
+  const pair = (inEl, outEl) => {
+    const P = { stage: "in", view: null, hover: "" };
+    const mk = el => { el.type = "hidden"; const b = document.createElement("button"); b.type = "button"; b.className = "dtrig"; b.setAttribute("aria-haspopup", "dialog"); b.setAttribute("aria-expanded", "false"); el.after(b); return b; };
+    P.bi = mk(inEl); P.bo = mk(outEl);
+    const paint = () => [[P.bi, inEl, "Check-in"], [P.bo, outEl, "Check-out"]].forEach(([b, el, l]) => { b.innerHTML = `${svg(CAL)}<span class="${el.value ? "" : "ph"}">${el.value ? short(el.value) : "Add date"}</span>`; b.setAttribute("aria-label", `${l}: ${el.value ? nice(el.value) : "not chosen"}`); });
+    [inEl, outEl].forEach(el => el.addEventListener("change", paint)); paint();
+    const thisMonth = new Date(); thisMonth.setDate(1); thisMonth.setHours(12);
+    const render = () => {
+      const panel = P.panel, ci = inEl.value, co = outEl.value, n = mq.matches ? 1 : 2;
+      const canBack = P.view > thisMonth;
+      let h = `<div class="ui-grab"></div><div class="cal-top"><div class="ui-h"><small>${P.stage === "in" ? "Step 1 of 2" : "Step 2 of 2"}</small><b>${P.stage === "in" ? "Choose your check-in" : "Now your check-out"}</b></div>
+        <div class="cal-nav"><button type="button" data-nav="-1" aria-label="Previous month" ${canBack ? "" : "disabled"}>‹</button><button type="button" data-nav="1" aria-label="Next month">›</button></div></div><div class="cal-months">`;
+      for (let k = 0; k < n; k++) {
+        const m = new Date(P.view.getFullYear(), P.view.getMonth() + k, 1, 12);
+        h += `<div class="cal-m"><h4>${MON[m.getMonth()]} <em>${m.getFullYear()}</em></h4><div class="cal-w">${["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"].map(d => `<span>${d}</span>`).join("")}</div><div class="cal-g">` + "<i></i>".repeat((m.getDay() + 6) % 7);
+        const days = new Date(m.getFullYear(), m.getMonth() + 1, 0).getDate();
+        for (let d = 1; d <= days; d++) {
+          const v = iso(new Date(m.getFullYear(), m.getMonth(), d, 12));
+          const end = co || (P.stage === "out" && P.hover > ci ? P.hover : "");
+          const cls = [v === ci && "s", v === co && "e", ci && end && v > ci && v < end && "r", ci && end && v === end && !co && "hv", v === today && "t"].filter(Boolean).join(" ");
+          const dis = v < today || (P.stage === "out" && ci && v === ci);
+          h += `<button type="button" class="${cls}" data-d="${v}" ${dis ? "disabled" : ""} aria-label="${nice(v)}" aria-pressed="${v === ci || v === co}">${d}</button>`;
+        }
+        h += "</div></div>";
+      }
+      const nn = ci && co ? nightsOf(ci, co) : 0;
+      h += `</div><div class="cal-foot"><div class="cal-sum"><span><small>Check-in</small>${ci ? short(ci) : "—"}</span><i></i><span><small>Check-out</small>${co ? short(co) : "—"}</span>${nn ? `<strong>${nn}<small>night${nn > 1 ? "s" : ""}</small></strong>` : ""}</div>
+        <div class="cal-act"><button type="button" class="cal-clear">Clear</button><button type="button" class="btn btn-navy cal-done" ${nn ? "" : "disabled"}>Done</button></div></div>`;
+      panel.innerHTML = h;
+      P.bi.classList.toggle("act", P.stage === "in"); P.bo.classList.toggle("act", P.stage === "out");
+    };
+    const onClick = e => {
+      const nav = e.target.closest("[data-nav]");
+      if (nav) { P.view = new Date(P.view.getFullYear(), P.view.getMonth() + +nav.dataset.nav, 1, 12); render(); return; }
+      const d = e.target.closest("[data-d]");
+      if (d) {
+        const v = d.dataset.d;
+        if (P.stage === "in" || !inEl.value || v < inEl.value) { inEl.value = v; outEl.value = ""; P.stage = "out"; paint(); fire(inEl, "input"); render(); }
+        else { outEl.value = v; paint(); fire(inEl, "change"); fire(outEl, "change"); render(); setTimeout(() => closeAll(true), 420); }
+        return;
+      }
+      if (e.target.closest(".cal-clear")) { inEl.value = outEl.value = ""; P.stage = "in"; P.hover = ""; paint(); fire(inEl, "input"); render(); }
+      if (e.target.closest(".cal-done")) closeAll(true);
+    };
+    const onHover = e => {
+      if (P.stage !== "out" || !inEl.value || outEl.value) return;
+      const d = e.target.closest("[data-d]"); const v = d ? d.dataset.d : "";
+      if (v === P.hover) return; P.hover = v;
+      P.panel.querySelectorAll("[data-d]").forEach(b => { const x = b.dataset.d; b.classList.toggle("r", !!v && v > inEl.value && x > inEl.value && x < v); b.classList.toggle("hv", !!v && v > inEl.value && x === v); });
+    };
+    const show = stage => {
+      const st = stage === "out" && !inEl.value ? "in" : stage;
+      if (cur && cur.pair === P) { P.stage = st; render(); return; }
+      P.stage = st; P.hover = "";
+      const base = inEl.value ? dObj(inEl.value) : new Date(); P.view = new Date(base.getFullYear(), base.getMonth(), 1, 12);
+      const c = open(st === "in" ? P.bi : P.bo, inEl.closest("label"), "ui-cal", panel => {
+        P.panel = panel; panel.setAttribute("role", "dialog"); panel.setAttribute("aria-label", "Choose your dates");
+        panel.addEventListener("click", onClick); panel.addEventListener("mouseover", onHover); render();
+      });
+      c.pair = P;
+      setTimeout(() => { const f = P.panel.querySelector(".s,[data-d]:not([disabled])"); f && f.focus({ preventScroll: true }); }, 80);
+    };
+    P.bi.addEventListener("click", () => show("in")); P.bo.addEventListener("click", () => show("out"));
+    return { show };
+  };
+  const dates = { q: pair($("#qIn"), $("#qOut")), f: pair($("#fIn"), $("#fOut")) };
+
+  /* --- review pop-up --- */
+  const dlg = $("#rvw"); let pending = null;
+  const review = d => {
+    const r = R.find(x => x.id === d.res), n = nightsOf(d.ci, d.co);
+    const part = (v, l) => { const t = dObj(v); return `<div><small>${l}</small><b>${t.getDate()}</b><span>${t.toLocaleDateString("en-GB", { month: "short" })} · ${t.toLocaleDateString("en-GB", { weekday: "short" })}</span></div>`; };
+    $("#rvwImg").innerHTML = `<img src="${ph(r, 0, 1200)}" alt="" referrerpolicy="no-referrer"><div class="rvw-cap"><small>${esc(r.tag)}</small><b>${r.name}</b><span>${esc(r.address)}</span></div>`;
+    $("#rvwDates").innerHTML = part(d.ci, "Check-in") + `<div class="tk-n"><i>${n}</i><em>night${n > 1 ? "s" : ""}</em></div>` + part(d.co, "Check-out");
+    const rows = [["Apartment", `${r.short} · ${r.tag}`], ["Guests", `${d.guests} guest${d.guests > 1 ? "s" : ""}`]];
+    if (d.name) rows.push(["Name", d.name]); if (d.arr) rows.push(["Arrival", d.arr]); if (d.note) rows.push(["Notes", d.note]);
+    $("#rvwList").innerHTML = rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("");
+    pending = d; closeAll(false); dlg.showModal(); document.body.style.overflow = "hidden";
+  };
+  $("#rvwGo").addEventListener("click", () => { const d = pending; dlg.close(); if (d) send(msg(d)); });
+  $("#rvwEdit").addEventListener("click", () => { dlg.close(); $("#book").scrollIntoView({ behavior: "smooth" }); });
+  $("#rvwX").addEventListener("click", () => dlg.close());
+  dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+  dlg.addEventListener("close", () => { document.body.style.overflow = ""; });
+  return { dates, review, closeAll };
+})();
 
 /* header + reveal */
 const hdr = $("#hdr"); const onS = () => hdr.classList.toggle("solid", scrollY > 40);
